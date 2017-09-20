@@ -40,10 +40,10 @@
     }
     print(1);
 
-    function print2() {
-        for (var i = 1; i <= 10; i++) {
+    function print2(num) {
+        for (var i = 1; i <= num; i++) {
             console.log(i);
         }
     }
-    print2();
+    print2(10);
 })();
