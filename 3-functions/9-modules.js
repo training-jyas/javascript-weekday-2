@@ -1,6 +1,13 @@
 // closure and iife implementation
-
 console.log('----------Module----------');
+// function test1(){
+//     return this;
+// }
+// var test = test1();
+// var test2  = (function test1(){
+//     return this;
+// })();
+// console.log(test, test2);
 // module1 is a iife here which returns a json object with some keys
 var module1 = (function () {
     var name = 'abc';
@@ -16,6 +23,8 @@ var module1 = (function () {
     return obj;
 })(); // here we are not passing any arguments to iife function
 console.log(module1);
+console.log(module1.age);
+console.log(module1.name);
 console.log(module1.getAge());
 
 
