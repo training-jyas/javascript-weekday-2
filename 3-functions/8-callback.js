@@ -34,3 +34,12 @@ console.log("######################");
 console.log('if the number is 20 and callback executed -', checkIf20(20, succesCallback, failureCallback));
 console.log("######################");
 console.log('if the number is 20 and callback executed -', checkIf20(30, succesCallback, failureCallback));
+
+// settimeout
+// function setTimeout(handler, time) {
+//     // wait for the time and then call the handler
+//     hadler();
+// }
+setTimeout(function(){
+    console.log('console in the settimeout')
+}, 3000);
