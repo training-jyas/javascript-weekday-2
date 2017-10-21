@@ -19,5 +19,5 @@ var circle = new Circle(30, 40, 10);
 console.log(circle.x);
 console.log(circle.y);
 console.log(circle.r);
-console.log(circle instanceof Shape);
-console.log(circle instanceof Circle);
+console.log(circle instanceof Shape); //true
+console.log(circle instanceof Circle); //true

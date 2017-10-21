@@ -26,25 +26,24 @@ function PersonClass(height, name) {
     this.height = height;
     this.name = name;
     this.getHeightInMetres = function() {
-            return 'Person\'s height in metres - ' + inchToMetre(this.height);
-        }
-        // this.complexion = null;
+        return 'Person\'s height in metres - ' + inchToMetre(this.height);
+    }
     this.getComplexion = function() {
         return 'Complexion - ' + this.complexion;
     }
-}
-
-PersonClass.prototype.getName = function() {
-    return 'Name -' + this.name;
 }
 
 // we create a object from the function class
 var personObj = new PersonClass(6, 'John');
 console.log(personObj.height);
 console.log(personObj.getHeightInMetres());
+console.log(personObj.weight);
 
 // if i want to access the private method
 // console.log(personObj.inchToMetre()) // uncomment this to see the output
+PersonClass.prototype.getName = function() {
+    return 'Name - ' + this.name;
+}
 console.log(personObj.getName());
 
 var personObj2 = new PersonClass(7, 'Ram');
@@ -64,6 +63,7 @@ console.log('personObj2', personObj2);
 console.log(personObj.getComplexion());
 console.log(personObj2.getComplexion());
 
+console.log(" =================== Array prototype Join ==================");
 // using prototype globally
 // we have read the "join" method in the Array module. how i can modify it using the prototype object of the "Array" class
 Array.prototype.join2 = function(char) {
@@ -76,16 +76,18 @@ Array.prototype.join2 = function(char) {
 }
 
 var arr = new Array(10, 20, 30);
+var arr2 = [];
+// console.log(arr.join2());
+console.log(arr.toString());
 console.log(arr.join2());
-console.log(arr.join());
 
-// var forEach = function (callback) {
-//     var array = this;
-//     var arr2Length = array.length;
-//     for (var i = 0; i < arr2Length; i++) {
-//         console.log('my for each method');
-//         callback(array[i], i);
-//     }
-// };
+var forEach = function (callback) {
+    var array = this;
+    var arr2Length = array.length;
+    for (var i = 0; i < arr2Length; i++) {
+        console.log('my for each method');
+        callback(array[i], i);
+    }
+};
 
-// Array.prototype.forEach = forEach;
+Array.prototype.forEach = forEach;

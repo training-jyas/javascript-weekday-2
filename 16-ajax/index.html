@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Express</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="js/utility.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <a id="google_link" href="http://www.google.com" target="_blank">Go to Google</a>
+    <h1>User Information App</h1>
+    <!--
+        This section is to show a user detailed information.
+    -->
+    <h2>User Info</h2>
+    <div id="userInfo">
+        <div><span>Username: </span><span id="userInfoName"></span></div>
+        <div><span>Age: </span><span id="userInfoAge"></span></div>
+        <div><span>Gender: </span><span id="userInfoGender"></span></div>
+        <div><span>Location: </span><span id="userInfoLocation"></span></div>
+    </div>
+
+    <!--
+        This section is used to display the user list
+    -->
+    <h2>User List</h2>
+    <div id="userList">
+        <table>
+            <thead>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Delete ?</th>
+            </thead>
+            <!--
+                this tbody is where we will update the user list once we get the reponse from the server
+            -->
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!--
+        This section is used to add a user to the database
+    -->
+    <h3>Add User</h3>
+    <div id="addUser">
+        <div><span>Username: </span><input type="text" id="inputUserName"></div>
+        <div><span>Email: </span><input type="text" id="inputUserEmail"></div>
+        <div><span>Full Name: </span><input type="text" id="inputUserFullname"></div>
+        <div><span>Age: </span><input type="text" id="inputUserAge"></div>
+        <div><span>Gender: </span><input type="text" id="inputUserGender"></div>
+        <div><span>Locarrrtion: </span><input type="text" id="inputUserLocation"></div>
+        <div><button id="btnAddUser">Add user</button></div>
+    </div>
+</body>
+
+</html>

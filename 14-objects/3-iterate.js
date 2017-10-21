@@ -10,12 +10,9 @@ console.log(obj.key);
 console.log(obj['key']);
 
 for (var key in obj) {
-    console.log(key);
-    // console.log(obj.key);
-    // console.log(obj[key]);
-    typeof obj[key] === 'function' ? obj[key]() : console.log(obj[key]);
-
-    console.log('---------');
+    console.log('key = ', key);
+    // console.log('value at this key ', key, 'is', obj.key);
+    console.log('value at this key ', key, 'is', obj[key]);
 }
 
 
