@@ -9,7 +9,7 @@ var Promises = function(fn) {
 }
 
 var test = function(bool) {
-    return Promises(function promiseFunc(resolve, reject) {
+    return Promises(function (resolve, reject) {
         if (bool) {
             resolve('resolved');
         } else {

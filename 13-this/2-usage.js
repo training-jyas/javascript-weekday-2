@@ -1,15 +1,17 @@
 var prop = 10;
 
 function test(a, b) {
-    console.log(this);
-    console.log(this.prop);
+    var prop = 50;
+    console.log(this); // window or test
+    console.log(this.prop); // 10 or 10
     console.log(a, b);
 };
 
 test(10, 30);
+window.test(10, 30);
 
 var obj = {
-    prop: 20
+    prop: 100
 };
 
 // call
@@ -26,8 +28,7 @@ test.apply({
 }, [10, 20]);
 
 // what if we have something like this
-var test2 = test;
-
+var name = 'sameera';
 var module = {
     name: 'abc',
     getName: function() {
@@ -35,11 +36,16 @@ var module = {
     }
 }
 
+console.log("-------------------------");
 module.getName(); // what will be the output
-module.getName.call({ name: 'def' }); // with some other context
+module.getName.call(window); // with some other context
 
+
+// BIND //
+var getName0 = module.getName;
 var getName1 = module.getName.bind(module);
 var getName2 = module.getName.bind({ name: 'xyz' });
 
+getName0();
 getName1(); // output of line 31 and 37 is the same. as the context is the same
 getName2();
