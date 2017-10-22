@@ -57,7 +57,7 @@ function populateTable1() {
             // For each item in our JSON, add a table row and cells to the content string
             $.each(data, function () {
                 tableContent += '<tr>';
-                tableContent += '<td><a href="#" class="linkshowuser" rel="' + this.username + '">' + this.username + '</a></td>';
+                tableContent += '<td><a href="#" class="linkshowuser" rel="' + this['$loki'] + '">' + this.username + '</a></td>';
                 tableContent += '<td>' + this.email + '</td>';
                 tableContent += '<td><a href="#" class="linkdeleteuser" rel="' + this['$loki'] + '">delete</a></td>';
                 tableContent += '</tr>';
@@ -85,10 +85,11 @@ function populateTable() {
         // so check the status
         if (req.status == 200) {
             userListData = JSON.parse(req.response);
+            console.log('response -', userListData);
             // For each item in our JSON, add a table row and cells to the content string
             userListData.forEach(function (item) {
                 tableContent += '<tr>';
-                tableContent += '<td><a href="#" class="linkshowuser" rel="' + item.username + '">' + item.username + '</a></td>';
+                tableContent += '<td><a href="#" class="linkshowuser" rel="' + item['$loki'] + '">' + item.username + '</a></td>';
                 tableContent += '<td>' + item.email + '</td>';
                 tableContent += '<td><a href="#" class="linkdeleteuser" rel="' + item['$loki'] + '">delete</a></td>';
                 tableContent += '</tr>';
@@ -119,12 +120,16 @@ function showUserInfo(event) {
     event.preventDefault();
 
     // Retrieve username from link rel attribute
-    var thisUserName = $(this).attr('rel');
+    var id = $(this).attr('rel');
+    console.log(id);
 
     // Get Index of object based on id value
-    var arrayPosition = userListData.map(function (arrayItem) {
-        return arrayItem.username;
-    }).indexOf(thisUserName);
+    var idArray = userListData.map(function (arrayItem) {
+        return arrayItem['$loki'];
+    });
+    console.log(idArray);
+    var arrayPosition = idArray.indexOf(parseInt(id));
+    console.log(arrayPosition);
 
     // Get our User Object
     var thisUserObject = userListData[arrayPosition];
@@ -144,11 +149,11 @@ function addUser(event) {
 
     // Super basic validation - increase errorCount variable if any fields are blank
     var errorCount = 0;
-    // $('#addUser input').each(function (index, val) {
-    //     if ($(this).val() === '') {
-    //         errorCount++;
-    //     }
-    // });
+    $('#addUser input').each(function (index, val) {
+        if ($(this).val() === '') {
+            errorCount++;
+        }
+    });
 
     // Check and make sure errorCount's still at zero
     if (errorCount === 0) {
@@ -169,8 +174,8 @@ function addUser(event) {
             data: newUser,
             url: addUrl,
             dataType: 'JSON'
-        }).done(function (response) {
-
+        })
+        .done(function (response) {
             // Check for successful (blank) response
             if (response) {
 
@@ -209,7 +214,8 @@ function deleteUser(event) {
         $.ajax({
             type: 'DELETE',
             url: deleteUrl + '/' + $(this).attr('rel')
-        }).done(function (response) {
+        })
+        .done(function (response) {
 
             // Check for a successful (blank) response
             if (response) {
